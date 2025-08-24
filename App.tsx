@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
 import { StatusBar } from 'react-native';
 
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>

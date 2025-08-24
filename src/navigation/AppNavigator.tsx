@@ -12,8 +12,7 @@ import CreateAppointmentScreen from '../screens/CreateAppointmentScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AdminDashboardScreen from '../screens/AdminDashboardScreen';
 import DoctorDashboardScreen from '../screens/DoctorDashboardScreen';
-import PatientDashboardScreen from '../screens/PatientDashboardScreen';
-
+import PatientDashboardScreen from '../screens/PatientDashboardScreen'; 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const AppNavigator: React.FC = () => {
@@ -62,7 +61,7 @@ export const AppNavigator: React.FC = () => {
                 options={{ title: 'Painel do Paciente' }}
               />
             )}
-
+⁠ 
             {/* Rotas comuns para todos os usuários autenticados */}
             <Stack.Screen 
               name="Home" 
