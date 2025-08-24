@@ -20,31 +20,15 @@ const RegisterScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [userType, setUserType] = useState<'PACIENTE' | 'ADMIN'>('PACIENTE');
 
   const handleRegister = async () => {
-    try {
-      setLoading(true);
-      setError('');
-
-      if (!name || !email || !password) {
-        setError('Por favor, preencha todos os campos');
-        return;
-      }
-
-      await register({
-        name,
-        email,
-        password,
-      });
-
-      // Após o registro bem-sucedido, navega para o login
-      navigation.navigate('Login');
-    } catch (err) {
-      setError('Erro ao criar conta. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
-  };
+    await register({
+  name,
+  email,
+  password,
+  userType, // NOVO - Envia tipo de usuário
+});
 
   return (
     <Container>
@@ -76,6 +60,29 @@ const RegisterScreen: React.FC = () => {
       />
 
       {error ? <ErrorText>{error}</ErrorText> : null}
+
+      <SectionTitle>Tipo de Usuário</SectionTitle>
+      <UserTypeContainer>
+      <UserTypeButton 
+          selected={userType === 'PACIENTE'}
+          onPress={() => setUserType('PACIENTE')}
+       >
+      <UserTypeText selected={userType === 'PACIENTE'}>
+      Paciente
+      </UserTypeText>
+      </UserTypeButton>
+  
+  <UserTypeButton 
+    selected={userType === 'ADMIN'}
+    onPress={() => setUserType('ADMIN')}
+  >
+    <UserTypeText selected={userType === 'ADMIN'}>
+      Administrador
+    </UserTypeText>
+  </UserTypeButton>
+</UserTypeContainer>
+      
+      
 
       <Button
         title="Cadastrar"
